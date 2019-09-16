@@ -1,0 +1,162 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.5",
+  "version": "1.0.0",
+  "id": "e42004fa-a73a-4c65-8674-de79adc0187f",
+  "packageName": "ITSchatbot3.package",
+  "devicePermissions" : [ "geolocation", "media" ],
+  "developer": {
+    "name": "ITO",
+    "websiteUrl": "https://kbforpilot.azurewebsites.net/qnamaker",
+    "privacyUrl": "https://home.kpmg/jp/en/home/about.html",
+    "termsOfUseUrl": "https://home.kpmg/jp/en/home/about.html",
+    "mpnId": ""
+  },
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us",
+    "additionalLanguages": [
+      {
+        "languageTag": "es-es",
+        "file": "en-us.json"
+      }
+    ]
+  },
+  "name": {
+    "short": "ITS Chatbot",
+    "full": "ITS Chatbot for Pilot"
+  },
+  "description": {
+    "short": "A chabot for ITS Pilot.",
+    "full": "This chatbot is created to answer questions related to Microsoft Teams."
+  },
+  "icons": {
+    "outline": "%icon3.png%",
+    "color": "%icon2.png"
+  },
+  "accentColor": "%HEX-COLOR%",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://contoso.com/teamstab/configure",
+      "canUpdateConfiguration": true,
+      "scopes": [ "team", "groupchat" ]
+    }
+  ],
+  "staticTabs": [
+    {
+      "entityId": "idForPage",
+      "name": "Display name of tab",
+      "contentUrl": "https://contoso.com/content?host=msteams",
+      "websiteUrl": "https://contoso.com/content",
+      "scopes": [ "personal" ]
+    }
+  ],
+  "bots": [
+    {
+      "botId": "91a0602e-a76f-4439-a3a9-725d72bb9e9c",
+      "needsChannelSelector": false,
+      "isNotificationOnly": false,
+      "scopes": [ "team", "personal", "groupchat" ],
+      "supportsFiles": true,
+      "commandLists": [
+        {
+          "scopes": [ "team", "groupchat" ],
+          "commands": [
+            {
+              "title": "Command 1",
+              "description": "Description of Command 1"
+            },
+            {
+              "title": "Command N",
+              "description": "Description of Command N"
+            }
+          ]
+        },
+        {
+          "scopes": [ "personal", "groupchat" ],
+          "commands": [
+            {
+              "title": "Personal command 1",
+              "description": "Description of Personal command 1"
+            },
+            {
+              "title": "Personal command N",
+              "description": "Description of Personal command N"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "connectors": [
+    {
+      "connectorId": "GUID-FROM-CONNECTOR-DEV-PORTAL%",
+      "configurationUrl": "https://contoso.com/teamsconnector/configure",
+      "scopes": [ "team"]
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "%MICROSOFT-APP-ID-REGISTERED-WITH-BOT-FRAMEWORK%",
+      "canUpdateConfiguration": true,
+      "commands": [
+        {
+          "id": "exampleCmd1",
+          "title": "Example Command",
+          "description": "Command Description; e.g., Search on the web",
+          "initialRun": true,
+          "type" : "search",
+          "context" : ["compose", "commandBox"],
+          "parameters": [
+            {
+              "name": "keyword",
+              "title": "Search keywords",
+              "description": "Enter the keywords to search for"
+            }
+          ]
+        },
+        {
+          "id": "exampleCmd2",
+          "title": "Example Command 2",
+          "description": "Command Description; e.g., Search for a customer",
+          "initialRun": true,
+          "type" : "action",
+          "fetchTask" : true,
+          "context" : ["message"],
+          "parameters": [
+            {
+              "name": "custinfo",
+              "title": "Customer name",
+              "description": "Enter a customer name",
+              "inputType" : "text"
+            }
+          ]
+        },
+        {
+          "id": "exampleMessageHandler",
+          "title": "Message Handler",
+          "description": "Domains that will create a preview when pasted into the compose box",
+          "messageHandlers": [
+            {
+              "type" : "link",
+              "value" : {
+                "domains" : [
+                  "mysite.someplace.com",
+                  "othersite.someplace.com"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers",
+  ],
+  "validDomains": [
+     "contoso.com",
+     "mysite.someplace.com",
+     "othersite.someplace.com"
+  ]
+}
